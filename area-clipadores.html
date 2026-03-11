@@ -690,7 +690,7 @@ function switchTab(tab){
   try{localStorage.setItem('aff_last_tab',tab);}catch(e){}
   const c=document.getElementById('painel-content');
   if(tab==='visao')      c.innerHTML=renderVisaoGeral();
-  else if(tab==='metricas') c.innerHTML=renderMetricas(); renderCharts();
+  else if(tab==='metricas'){ c.innerHTML=renderMetricas(); renderCharts(); }
   else if(tab==='link')  { c.innerHTML=renderLink(); setTimeout(genQR,80); }
   else if(tab==='midias') c.innerHTML=renderMidias();
   else if(tab==='hist')   c.innerHTML=renderHistorico();
