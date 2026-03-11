@@ -530,6 +530,8 @@ function doLogin(){
     if(document.getElementById('remember-cb').checked){
       try{localStorage.setItem('bb_saved_login',u);}catch(e){}
     }
+    // salva sessão para restaurar após atualização do site
+    try{localStorage.setItem('bb_session',JSON.stringify({u,p}));}catch(e){}
     startSession();
   } else {
     err.style.display='block';
@@ -538,12 +540,13 @@ function doLogin(){
 }
 function doLogout(){
   currentUser=null;
+  try{localStorage.removeItem('bb_session'); localStorage.removeItem('bb_last_tab');}catch(e){}
   document.getElementById('app-shell').style.display='none';
   document.getElementById('login-screen').style.display='flex';
   document.getElementById('l-pass').value='';
   toast('Logout realizado','s');
 }
-function startSession(){
+function startSession(restoredTab){
   document.getElementById('login-screen').style.display='none';
   document.getElementById('app-shell').style.display='flex';
   buildSidebar();
@@ -551,6 +554,17 @@ function startSession(){
   const rb=document.getElementById('sl-role-badge');
   rb.textContent=currentUser.display;
   rb.className='sl-role role-'+currentUser.role;
+  // restaura aba onde o usuário estava ou vai para a primeira
+  const lastTab=restoredTab||null;
+  try{
+    const saved=localStorage.getItem('bb_last_tab');
+    if(saved&&!restoredTab){
+      const t=JSON.parse(saved);
+      if(t.role===currentUser.role&&t.id){
+        goto(t.id,null); return;
+      }
+    }
+  }catch(e){}
   renderFirstPage();
   try{const s=localStorage.getItem('bb_saved_login'); if(s) document.getElementById('l-user').value=s;}catch(e){}
 }
@@ -614,6 +628,8 @@ function goto(id,btn){
     btns.forEach(b=>{ if(b.textContent.trim().startsWith(id)) b.classList.add('on'); });
   }
   const r=currentUser.role;
+  // salva última aba visitada
+  try{localStorage.setItem('bb_last_tab',JSON.stringify({role:r,id}));}catch(e){}
   const el=document.getElementById('content');
   if(r==='cmo')    renderCMO(id,el);
   else if(r==='head') renderHEAD(id,el);
@@ -2130,5 +2146,19 @@ window.goto=function(id,btn){
 try{
   const saved=localStorage.getItem('bb_saved_login');
   if(saved) document.getElementById('l-user').value=saved;
+}catch(e){}
+
+// restaura sessão automaticamente se o usuário já estava logado
+try{
+  const sess=localStorage.getItem('bb_session');
+  if(sess){
+    const {u,p}=JSON.parse(sess);
+    if(USERS[u]&&USERS[u].pass===p){
+      currentUser={username:u,...USERS[u]};
+      startSession();
+    } else {
+      localStorage.removeItem('bb_session');
+    }
+  }
 }catch(e){}
 </script>
