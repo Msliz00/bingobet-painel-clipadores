@@ -414,6 +414,7 @@ tr:last-child td{border-bottom:none}
 // BANCO DE AFILIADOS
 // ══════════════════════════════════════════════════
 const AFILIADOS_DB = [
+  { email:'teste@clip.com',         username:'teste',       senha:'teste123',   btag:'38590', metrics:{regs:25,ftds:10,cpasPagos:8, comissao:2050} },
   { email:'ana.silva@email.com',    username:'ana_clip',    senha:'Ana123!',    btag:'38584', metrics:{regs:42,ftds:18,cpasPagos:15,comissao:3850} },
   { email:'pedro.costa@email.com',  username:'pedro_ftd',   senha:'Pedro123!',  btag:'38585', metrics:{regs:38,ftds:15,cpasPagos:13,comissao:3200} },
   { email:'julia.lima@email.com',   username:'julia_lima',  senha:'Julia123!',  btag:'38586', metrics:{regs:35,ftds:14,cpasPagos:11,comissao:2900} },
@@ -465,10 +466,13 @@ function doLogin() {
   currentUser = affiliate;
   err.classList.remove('show');
   
-  if (document.getElementById('save-login').checked) {
-    localStorage.setItem('bingobet_user', user);
-    localStorage.setItem('bingobet_pass', pass);
-  }
+  try {
+    localStorage.setItem('bingobet_clip_session', user);
+    if (document.getElementById('save-login').checked) {
+      localStorage.setItem('bingobet_user', user);
+      localStorage.setItem('bingobet_pass', pass);
+    }
+  } catch(e) {}
   
   showLoading();
 }
@@ -504,8 +508,11 @@ function finalizarAcesso() {
 
 function doLogout() {
   currentUser = null;
-  localStorage.removeItem('bingobet_user');
-  localStorage.removeItem('bingobet_pass');
+  try {
+    localStorage.removeItem('bingobet_clip_session');
+    localStorage.removeItem('bingobet_user');
+    localStorage.removeItem('bingobet_pass');
+  } catch(e) {}
   document.getElementById('l-user').value = '';
   document.getElementById('l-pass').value = '';
   document.getElementById('l-err').classList.remove('show');
@@ -936,6 +943,22 @@ function sendChatMsg() {
 // INICIALIZAÇÃO
 // ══════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
+  // Restaura sessão automaticamente se o usuário já estava logado
+  try {
+    const savedUser = localStorage.getItem('bingobet_clip_session');
+    if (savedUser) {
+      const affiliate = AFILIADOS_DB.find(a => a.username === savedUser);
+      if (affiliate) {
+        currentUser = affiliate;
+        goTo('painel');
+        updateUserInfo();
+        switchTab('visao');
+      } else {
+        localStorage.removeItem('bingobet_clip_session');
+      }
+    }
+  } catch(e) {}
+
   const saved_user = localStorage.getItem('bingobet_user');
   const saved_pass = localStorage.getItem('bingobet_pass');
   
