@@ -661,6 +661,7 @@ async function doCadastro(){
 
 function doLogout(){
   localStorage.removeItem('aff_session');
+  localStorage.removeItem('aff_last_tab');
   currentClipper=null; clipperContents=[];
   goTo('login');
 }
@@ -671,7 +672,10 @@ async function enterPainel(aff){
   document.getElementById('tb-name').textContent=aff.username;
   document.getElementById('tb-av').textContent=aff.username.charAt(0).toUpperCase();
   goTo('painel');
-  switchTab('visao');
+  // restaura última aba ou vai para visão geral
+  let lastTab='visao';
+  try{ const t=localStorage.getItem('aff_last_tab'); if(t) lastTab=t; }catch(e){}
+  switchTab(lastTab);
   addChatMsg('bot','👋 Olá! Sou o suporte BINGOBET. Como posso te ajudar hoje?');
 }
 
@@ -682,6 +686,8 @@ function switchTab(tab){
   ['visao','metricas','link','midias','hist','comunidade'].forEach(t=>{
     document.getElementById('tab-'+t).classList.toggle('on',t===tab);
   });
+  // salva última aba visitada
+  try{localStorage.setItem('aff_last_tab',tab);}catch(e){}
   const c=document.getElementById('painel-content');
   if(tab==='visao')      c.innerHTML=renderVisaoGeral();
   else if(tab==='metricas') c.innerHTML=renderMetricas(); renderCharts();
