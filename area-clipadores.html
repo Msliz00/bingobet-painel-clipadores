@@ -18,35 +18,22 @@
   --font:'Outfit',sans-serif;
 }
 html,body{height:100%;background:var(--bg);color:#fff;font-family:var(--font)}
-body::before{
-  content:'';position:fixed;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 15% 10%,rgba(255,107,0,0.08) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 40% at 85% 85%,rgba(255,140,66,0.06) 0%,transparent 55%),
-    radial-gradient(ellipse 40% 30% at 50% 50%,rgba(255,179,0,0.03) 0%,transparent 70%);
-  pointer-events:none;
-}
+body::before{content:'';position:fixed;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(255,107,0,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 85% 85%,rgba(255,140,66,0.06) 0%,transparent 55%),radial-gradient(ellipse 40% 30% at 50% 50%,rgba(255,179,0,0.03) 0%,transparent 70%);pointer-events:none;}
 .noise{position:fixed;inset:0;z-index:0;opacity:.022;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 #app{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px}
 .screen{display:none;width:100%;max-width:480px;animation:fadeUp .35s ease both}
 .screen.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
-/* ── LOGO ── */
 .logo-area{text-align:center;margin-bottom:24px}
 .logo-img{width:110px;height:auto;filter:drop-shadow(0 4px 24px rgba(255,107,0,0.35));margin-bottom:10px}
 .brand{font-size:1.5rem;font-weight:900;letter-spacing:-.01em;line-height:1.1}
 .brand span{color:var(--orange)}
-
-/* ── AUTH CARD ── */
 .auth-card{background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.09);border-radius:22px;padding:30px;backdrop-filter:blur(10px);box-shadow:0 24px 80px rgba(0,0,0,0.5)}
 .card-title{font-size:1.15rem;font-weight:900;text-align:center;margin-bottom:6px;letter-spacing:-.01em}
 .card-sub{font-size:.78rem;color:var(--m2);text-align:center;margin-bottom:22px;line-height:1.5}
 .section-divider{display:flex;align-items:center;gap:10px;margin:18px 0}
 .section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08)}
 .section-divider span{font-size:.68rem;font-weight:800;letter-spacing:.1em;color:var(--m2)}
-
-/* ── FORM ── */
 .inp-g{margin-bottom:14px}
 .inp-lbl{font-size:.67rem;font-weight:800;letter-spacing:.1em;color:var(--m2);margin-bottom:5px}
 .inp{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:11px;padding:11px 14px;color:#fff;font-family:var(--font);font-size:.87rem;outline:none;transition:border-color .2s,box-shadow .2s}
@@ -60,12 +47,8 @@ body::before{
 .save-row{display:flex;align-items:center;gap:8px;margin-bottom:14px}
 .save-row input[type=checkbox]{accent-color:var(--orange);width:14px;height:14px}
 .save-row label{font-size:.78rem;color:var(--m2);cursor:pointer;user-select:none}
-
-/* ── WARN BOX ── */
 .warn-box{background:rgba(255,179,0,0.08);border:1px solid rgba(255,179,0,0.22);border-radius:11px;padding:11px 14px;margin-bottom:16px;font-size:.76rem;color:var(--orange3);line-height:1.6;display:flex;gap:9px;align-items:flex-start}
 .warn-box svg{flex-shrink:0;margin-top:1px}
-
-/* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:7px;padding:10px 18px;border-radius:11px;font-family:var(--font);font-weight:800;font-size:.85rem;cursor:pointer;border:none;transition:all .2s;letter-spacing:.01em;text-decoration:none}
 .btn-full{width:100%;justify-content:center;padding:14px}
 .btn-o{background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;box-shadow:0 4px 20px rgba(255,107,0,0.35)}
@@ -79,47 +62,18 @@ body::before{
 .link-btn{background:none;border:none;color:var(--orange);font-family:var(--font);font-size:.83rem;font-weight:700;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
 .link-btn:hover{color:var(--orange2)}
 .switch-row{text-align:center;margin-top:18px;font-size:.8rem;color:var(--m2)}
-
-/* Entrar button shine animation */
-@keyframes shine{
-  0%{background-position:-200% center}
-  100%{background-position:200% center}
-}
-.btn-entrar{
-  position:relative;overflow:hidden;
-  background:linear-gradient(135deg,var(--orange),var(--orange2));
-  color:#fff;box-shadow:0 4px 20px rgba(255,107,0,0.4);
-}
-.btn-entrar::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.35) 50%,transparent 60%);
-  background-size:200% auto;
-  animation:shine 2.2s linear infinite;
-}
+@keyframes shine{0%{background-position:-200% center}100%{background-position:200% center}}
+.btn-entrar{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--orange),var(--orange2));color:#fff;box-shadow:0 4px 20px rgba(255,107,0,0.4);}
+.btn-entrar::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.35) 50%,transparent 60%);background-size:200% auto;animation:shine 2.2s linear infinite;}
 .btn-entrar:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(255,107,0,0.55)}
-
-/* Cadastro button emphasis */
-.btn-cadastro{
-  background:linear-gradient(135deg,#FF6B00,#FFB300);
-  color:#000;font-weight:900;
-  box-shadow:0 4px 24px rgba(255,107,0,0.45),0 0 0 2px rgba(255,179,0,0.2);
-  letter-spacing:.02em;font-size:.9rem;
-}
+.btn-cadastro{background:linear-gradient(135deg,#FF6B00,#FFB300);color:#000;font-weight:900;box-shadow:0 4px 24px rgba(255,107,0,0.45),0 0 0 2px rgba(255,179,0,0.2);letter-spacing:.02em;font-size:.9rem;}
 .btn-cadastro:hover{transform:translateY(-2px);box-shadow:0 8px 36px rgba(255,107,0,0.6),0 0 0 3px rgba(255,179,0,0.3)}
-
-/* ── PENDING ── */
 .pending-card{text-align:center;padding:36px 28px}
 .pending-icon{width:72px;height:72px;background:rgba(255,179,0,0.1);border:1px solid rgba(255,179,0,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem}
 .pending-title{font-size:1.1rem;font-weight:900;margin-bottom:10px}
 .pending-text{font-size:.84rem;color:var(--m);line-height:1.7;margin-bottom:22px}
 .pending-email{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--orange);background:rgba(255,107,0,0.08);border:1px solid rgba(255,107,0,0.2);border-radius:8px;padding:6px 12px;display:inline-block;margin-bottom:8px}
-
-/* ── LOADING OVERLAY ── */
-#loading-overlay{
-  display:none;position:fixed;inset:0;z-index:500;
-  background:rgba(5,3,2,0.93);backdrop-filter:blur(8px);
-  align-items:center;justify-content:center;flex-direction:column;gap:0;
-}
+#loading-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,3,2,0.93);backdrop-filter:blur(8px);align-items:center;justify-content:center;flex-direction:column;gap:0;}
 #loading-overlay.show{display:flex;animation:fadeIn .3s ease}
 .loading-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:24px;padding:40px 44px;text-align:center;max-width:380px;width:90%;box-shadow:0 32px 80px rgba(0,0,0,0.6)}
 .loading-logo{width:80px;height:auto;margin:0 auto 20px;filter:drop-shadow(0 4px 18px rgba(255,107,0,0.4))}
@@ -130,10 +84,6 @@ body::before{
 .loading-pct{font-size:.75rem;font-weight:800;color:var(--orange);margin-bottom:22px;font-family:'JetBrains Mono',monospace}
 .loading-status{font-size:.73rem;color:var(--m2);min-height:18px;margin-bottom:24px}
 #btn-acessar-painel{display:none}
-
-/* ════════════════
-   PAINEL
-════════════════ */
 #screen-painel{max-width:none;width:100%}
 #screen-painel.active{display:flex;flex-direction:column;min-height:100vh}
 .topbar{background:rgba(8,6,4,0.96);border-bottom:1px solid rgba(255,255,255,0.07);backdrop-filter:blur(14px);padding:0 22px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;flex-shrink:0}
@@ -153,40 +103,28 @@ body::before{
 .ptab.on{color:#fff;border-bottom-color:var(--orange);background:rgba(255,107,0,0.06)}
 .ptab:hover:not(.on){color:var(--m)}
 .painel-content{flex:1;padding:24px 20px;max-width:980px;width:100%;margin:0 auto}
-
-/* stat cards */
 .sc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin-bottom:20px}
 .sc{background:var(--card);border:1px solid var(--card-b);border-radius:15px;padding:15px 17px;transition:all .2s;cursor:default}
 .sc:hover{border-color:rgba(255,107,0,0.22);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
 .sc-ico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:11px}
 .sc-v{font-size:1.5rem;font-weight:900;margin-bottom:2px}
 .sc-l{font-size:.68rem;font-weight:700;color:var(--m2);letter-spacing:.05em}
-
-/* content card */
 .ccard{background:var(--card);border:1px solid var(--card-b);border-radius:16px;overflow:hidden;margin-bottom:16px}
 .ccard-h{padding:15px 20px 12px;display:flex;align-items:center;gap:9px;font-size:.9rem;font-weight:800;border-bottom:1px solid rgba(255,255,255,0.06)}
 .ccard-b{padding:18px 20px}
-
-/* ── LINK & QR COPY BTN ── */
 .copy-link-btn{display:flex;align-items:center;gap:8px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.22);color:var(--green);border-radius:10px;padding:10px 16px;font-family:var(--font);font-size:.83rem;font-weight:700;cursor:pointer;transition:all .18s;width:100%;justify-content:center}
 .copy-link-btn:hover{background:rgba(34,197,94,0.2);transform:translateY(-1px)}
 .download-qr-btn{display:flex;align-items:center;gap:8px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.22);color:var(--blue);border-radius:10px;padding:10px 16px;font-family:var(--font);font-size:.83rem;font-weight:700;cursor:pointer;transition:all .18s;width:100%;justify-content:center;margin-top:10px}
 .download-qr-btn:hover{background:rgba(59,130,246,0.2);transform:translateY(-1px)}
-
-/* platform buttons */
 .plat-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
 .plat-btn{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:9px;padding:8px 14px;font-family:var(--font);font-size:.78rem;font-weight:700;color:var(--m);cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:6px}
 .plat-btn:hover{color:#fff;border-color:rgba(255,255,255,0.22)}
 .plat-btn.selected{color:#fff;border-color:var(--orange);background:rgba(255,107,0,0.1)}
-
-/* platform metric cards */
 .plat-metrics{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin-bottom:4px}
 .pm-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:11px;padding:10px 13px;text-align:center}
 .pm-ico{font-size:1.1rem;margin-bottom:4px}
 .pm-v{font-size:1.1rem;font-weight:900}
 .pm-l{font-size:.62rem;color:var(--m2);font-weight:700;letter-spacing:.03em;margin-top:2px}
-
-/* table */
 .tbl-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse}
 th{font-size:.68rem;font-weight:800;letter-spacing:.08em;color:var(--m2);padding:8px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.07)}
@@ -199,11 +137,7 @@ tr:last-child td{border-bottom:none}
 .tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:.66rem;font-weight:800;letter-spacing:.06em}
 .tag-o{background:rgba(255,107,0,0.1);color:var(--orange);border:1px solid rgba(255,107,0,0.25)}
 .tag-g{background:rgba(34,197,94,0.1);color:var(--green);border:1px solid rgba(34,197,94,0.2)}
-
-/* chart canvas wrapper */
 .chart-wrap{position:relative;height:180px;margin-bottom:4px}
-
-/* modal */
 .modal-over{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.75);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:20px}
 .modal-over.open{display:flex;animation:fadeIn .2s ease}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -217,14 +151,10 @@ tr:last-child td{border-bottom:none}
 .empty{text-align:center;padding:36px 20px;color:var(--m2)}
 .empty-ico{font-size:2.2rem;margin-bottom:10px}
 .empty-txt{font-size:.82rem;line-height:1.6}
-
-/* toast */
 #toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1614;border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:11px 20px;font-size:.8rem;font-weight:700;color:#fff;z-index:999;opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 #toast.s{border-color:rgba(34,197,94,0.3);color:#4ade80}
 #toast.e{border-color:rgba(239,68,68,0.3);color:#f87171}
-
-/* chatbot */
 #chat-fab{position:fixed;bottom:24px;right:24px;z-index:300;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--orange2));border:none;cursor:pointer;font-size:1.55rem;box-shadow:0 6px 28px rgba(255,107,0,0.55),0 0 0 0 rgba(255,107,0,0.4);animation:pulse-fab 2.5s infinite;transition:transform .18s}
 #chat-fab:hover{transform:scale(1.08)}
 @keyframes pulse-fab{0%,100%{box-shadow:0 6px 28px rgba(255,107,0,0.55),0 0 0 0 rgba(255,107,0,0.4)}50%{box-shadow:0 6px 28px rgba(255,107,0,0.55),0 0 0 10px rgba(255,107,0,0)}}
@@ -264,20 +194,775 @@ tr:last-child td{border-bottom:none}
 .chat-send{background:linear-gradient(135deg,var(--orange),var(--orange2));border:none;border-radius:9px;padding:9px 12px;cursor:pointer;transition:all .18s;flex-shrink:0}
 .chat-send:hover{transform:scale(1.06)}
 .chat-send svg{width:15px;height:15px;stroke:#fff;stroke-width:2}
-@media(max-width:520px){
-  .sc-grid{grid-template-columns:repeat(2,1fr)}
-  .plat-metrics{grid-template-columns:repeat(3,1fr)}
-  #chat-window{width:calc(100vw - 32px);right:16px;bottom:90px}
-  .painel-content{padding:16px 12px}
-  .painel-tabs{gap:0}
-  .ptab{padding:9px 11px;font-size:.76rem}
-}
+@media(max-width:520px){.sc-grid{grid-template-columns:repeat(2,1fr)}.plat-metrics{grid-template-columns:repeat(3,1fr)}#chat-window{width:calc(100vw - 32px);right:16px;bottom:90px}.painel-content{padding:16px 12px}.painel-tabs{gap:0}.ptab{padding:9px 11px;font-size:.76rem}}
 </style>
 </head>
 <body>
-<div class="noise"></div>
+  <div class="noise"></div>
 
 <!-- LOADING OVERLAY -->
 <div id="loading-overlay">
   <div class="loading-card">
-    <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAQ4BDgDASIAAhEBAxEB/8QAHQABAAIDAQEBAQAAAAAAAAAAAAgJBQYHBAIDAv/EAFkQAAEDAwIDBQIJCAYFCgUDBQABAgMEBQYHEQgSIRMxQVFhcYEJFBUiMlJykaEWI0JigpKisTNDY5OywSRTc8LSFxg0VFaDlaOzwyVEV9PkRZTwVXSE0eH/xAAbAQEAAwADAQAAAAAAAAAAAAAABQYHAgMEAf/EAC0RAQACAAQDBgYDAQAAAAAAAAABAgMEBREGITESIkFhocEUUXGBkbEy4fDR/9oADAMBAAIRAxEAPwCGQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZGxWK936q+K2OzXG6VH+qo6Z8z/uaiqBjgdgxnho1ovqMfHh01vhd/WXCojp+X2sc7n/hOj2LgmzuoRrrzleP29F7206S1Dm+1FaxN/eBFgE3LVwPWWNE+VdQbhUr4/FrcyH/ABPebBBwU6YtYnbZDl8j/FW1NO1Pu7Bf5gQDBYD/AMyzSr/+t5j/APvKf/7AXgr0rX/9czFP/wDMp/8A7AFfwJ5XHglwKRq/J2WZLTr4LOsEv8mMNOvvA9c42udYtQKSoX9GOttzoUT2uY9/+ECHwO7ZXwn6yWNr5Kaz0F8iZ3vtta1y7ejZORy+xEU4/k2M5HjNX8UyKw3O0T77IytpXwqvs5kTdPVAMSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHusFnul/vVJZrLQz19wq5Eip6eFvM97l8E/mq9yIiqoHhBMTTvgnqKihiq88yt1HO9EV1Da42vdH6LM/pv57NVPJVN8bwV6VonW+5iq//wB5Tf8A2AK/wT+m4KtLnRuSK/5gx+3RVqqdyIvqnYf5nP8AOOCS6U8ElRhmY09c9EVW0lyp1hcvokjFcir7WonqBEEGezrDsmwe/wAliyq0VFsr405uSVEVr2+DmOTdr29/VqqnQwIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPuGKSaZkMMb5JHuRrGMbu5yr3IiJ3qB8A7/pPwo6kZkkVbfImYna37L2lexVqXN/VgTZU/bVnvJYaYcMuleEJFUyWf8obkzZVq7ttKiL5ti27NOvduiqnmBAXT3SjUPPntXFsVuFbTuXb425nZU6ef51+zPci7+hIrAeCa5zpHUZzl0FG1erqS1xLK/byWV+yNX2NcnqTXjYyONscbGsY1Ea1rU2RETuREPoDj+E8NWjuLIx8eKRXepb3z3Z61Ku9rF/N/c1DrFuoaK3UjKS30dPR07PoRQRJGxvsRE2Q9AAAAAAAAAAAAAea6W633WikobpQ0tdSyJs+CpibJG72tciop6QBwHUvhO0vypstRZaafFLg7dUkt/wA6BV/WhcvLt6MVhEvWDhu1I06ZNXuoEv1lj3ctfbWq/s2+ckf0mdO9erU+sWZACmcFi+vfC9iGfx1F3xtkGN5G5Fd2kMe1LUu/tY07lVf029eu6o4gVqFhWS4Dkk2P5Ta5aCtj6t5urJWeD43J0c1fNPYuyoqAa6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATg+Du06pqXHLhqTcKdr6ytldRW1zm79nCz+ke31c/5u/lGvmpB8ti0Fx9uLaM4lY+z7OSC1wumbt3SyN7ST+N7gN2AAAAAcb4w8FtmZaIXyrqKeP5RsVLJc6Ko2+fH2TeeRu/1XMa5FTu35V8EKyyz/i8yRmNcPWVT8yJNX03ybE1f0lnVI3J7mK9fcVgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABt2lum+X6lX9LPidrfVPbss9Q/wCZBTNX9KR/cid/Tqq7dEUnnoNwy4Zpy2C7XdkeR5I3Z3xqoj/MU7v7GNeiKn13bu6bpy9wEWNE+F3O8/SC6XhjsYsL9nJUVcS9vM3+zh6Lsv1ncqdd05ia+keienumUDH4/ZmS3JG7PudZtLUv89nKmzEXyYjU8zo4AAAAAfnVVEFLTvqKmaOCGNOZ8kjka1qeaqvREA/QHI814kdHsVc+Koy2C51LP6i1MWqVV8udv5tF9rkOPZPxv2eJzmYzgldVp+jLcKxkG3qrGI/f95AJeggBeONHU6qc5tusuM2+PwX4vLK9Pesm38JrlTxZ61yu3jv1vp08o7ZCqfxNUCyIFbcHFjrbG/mfkVDMn1X2yBE/BqGxWbjP1QpHNS4WnGrjH+lzU0sT19itk2T91QLAgRIxDjcx+oeyLK8LuFv8HTW+pbUt9vI9GKie9TvenWsGnGoHJFjGVUNRVuT/AKFMqw1HrtG/ZztvNu6eoG+AAAAAAAAGm6u6a4vqfi0liyWjR+27qWrjREnpZFT6bHeHhui9F8UNyAFUOtml+R6VZfJYb7H2sMm8lDXRtVIquLf6TfJydEc3vRfNFRV0Uth1r02seqWDVWN3hiRyqiyUVWjd30s6J816eaeCp4oqp5KlW+b4zd8Nyy44xfaZae4W+ZYpW+C+KOavi1yKjkXxRUAwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADYdNLC7KNQ8exxGq5LlcoKZ+3gx8iI5fYjd19xbu1EaiNaiIidERPArg4D7B8tcQtvrHs54rPR1Fc5FTpvy9k37nSovuLHwAAAAACHnwk+TcltxTDopOssstyqGb9yNTs4l9/NL9xCo7Txq5N+UvEJfWxyc9PaWx2yHr3dmm8if3rpDiwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkDw2cNd91KdBkORrPZcU35my8u09cnlEi9zf7RU28kXrt0DhS4X/jzKTN9TKFUpV2lt9llbssqd6STp4N8Uj8f0unRZqxMZFG2ONjWMYiNa1qbI1E7kRAMPhWKY9hmPwWHGLVT223wJ82KJvVy+LnOXq5y+LlVVUzQAAA+ZpI4YXzTSMjjY1XPe9dmtROqqqr3IB9GvZ5m+KYLZ1uuWXyjtVL15O2f8+VU8GMTdz19GoqkcNf+Lq22R9RYNMmwXW4N3ZLd5U5qWFe7803+tVPrL83u+mhC3LMlv8ALL6lvOSXerutfL9KaokVyon1UTua1PBqbInggEsNVuNKoe6Wg02sLYWdWpcro3mcvqyFq7J6K5V9WoRhzvUPNs5qlqMsya43X53M2KWXaFi/qxN2Y33Ihq4AAGfwfC8qze7fJeJ2Ktu9UmyvbAzdsaL3K967NYnq5UQDAAlJh3BXnVxjZNk2R2exNd1WKFrquZnoqJys+56nSrRwSYRExvytmGQ1bvFaVkMCL7nNf/MCCILD6fg50hiREe/I59vGSvam/wC6xD9JeD3R57dmsv8AGvm24Jv+LFArsPqN743texzmvaqK1zV2VF80J53jgn0+nYq2rJ8lopFTp27oZ2p7kY1fxIm8QGmE+kufLi016p7uj6VlVFPFGsbkY5zkRHsVV5XfNVdkVeiou/UDoOiXFTnOEywW3J5ZcpsSKjVbUyb1cLfNkq9XbfVfv3bIrSdumue4tqJjcd/xW5srKV3zZWL82WB/iyRne134L3oqp1KjjcNI9Rsl0xy2HIcbqlY5FRtTSvVexqo9+scieKeS96L1QC2gGo6RagWLUzCKPKbDIqRTfMqKd6oslNMm3NG/1TdNl8UVF8TbgAAAAAART+EF0wZd8Vp9SbXTp8ftCNp7lyJ1lpXO2a9fNWPd+69d+jUJWHiv9qor7Y6+y3KFJqKvp5KaojX9KN7Va5PuVQKdAZnOceq8TzK8YzXbrUWytlpXu225+Ryojk9FREVPRTDAAAAAAAA9lmtlfeLnBbLZSyVVXO7ljiYnVV/yTxVV6IhxtatIm1p2iH2tZtMREc3jMrZMcv8AfF2s9mr65EXZXQQOc1PaqJsnvJGaa6I2SywxV2TMiu1yVEd2Lk3p4l8uX9NfV3T08TrcMUUETYYY2RxsTZrGNREankiIUTUuOcHBtNMrTt7eM8o+3jPotuR4TxcSsWzFuz5Rzn+vVDyPSPUWSPnbjM6J+tPE1fuV25hb7heWWON0t1x+4U0LfpSrCro09rk3T8ScB/FRFTZU3RSJw+Pc3Fu/hVmPLePXef0kr8IZaa9zEtE+e0+0IAglDq9o7bL7Rz3bGqWKhvDEV6wxojYqnzTbua/yVOir39+6RhljkhlfFKx0cjHK17XJsrVTvRU8FL5o+tZfVcLt4XKY6xPWP6+UqhqWl42n4nYxOcT0nwl8AAl0cAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmf8GrYdoMwyiRn0nU9BA72I6SRPxiJknCOBGx/I/DxbKpzOSS7VlTXPTbr9Psmr72xNX3ndwAAAHgyO601ix65XytXalt9JLVTLv3MjYrnfginvOIccGTfk5w+XeCOTkqLzNFbYuvg9eeRPfGx6e8CuK93GpvF6rrvWv56quqJKmZ3m97lc5fvVTxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmhwbcOjGR0eo+fUHNI7lms9snb0ane2eVq+PcrWr3fSXw21Dgn0KZmFyj1Ayyj58foZdqCmlb82unavVyovfGxfc53TuRyLPcAAAAB475dLdZLPV3e7VkVHQUcTpqieVdmxsam6qoH45RfrPjFhq79f7hDb7bRxrJPPKuzWp/NVVeiInVVVETqV6cS3EbfdTaqexWF09oxJrtkgR3LNW7L0dMqeHikadE8d122xHE7rhddWslWnpHTUeK0Mi/EKNV2WVe7tpU8Xqncnc1F2TqqqvGwAAAAADeNENOLtqlqBRYvbFWGN356tqlbu2mp2qnM9fNeqIieLlROneWe6dYTjeAYvTY7jFujo6OFPnLtvJM/brJI7vc5fNfYmyIiHHOBDT2PG9ImZLVwI265K5KpzlT5zKZu6Qt9iorn+vOnkSGAAAAAABznW3WTDtKLOtRfatKi5ysVaS107kWedfBVT9Bm/e9enRdt16AbTneW4/g+MVWR5NcY6G30zfnPd1c93gxje9zl8EQrY4jNZr3q7lKVMySUNho3OS227m3RiL/WP26OkVO9e5E6J4quJ1q1ZyvVfIvlPIKlI6SFVSit8KqkFK1fJPFy+Ll6r6IiImggAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJx/AO/KZlj1Ivdyq1Rp3KUUT0VfN3KmnzoiKnnrG+G80Fa+OgV96OJ06LIRs7r3FVkLRN73rG+aKn9/OAPK1/+zFf8KJbx+6JHMcALaVnwV6hjZHUWK414LfcILzUSzMVF6PdswwMCqv99tSqX4/ACEANj4ZuGjR/FD2s0bpUVOPnPMYt+VyWf+TgMW/Q+Z9cJmB1Lph6h0kKzxCu6QWKhq2R/2HiBhABxQAAAAAAB/WqrVRzVVFTuVDNW/L8stzUbb8ovdGidyQV8rNvucYQAHdqziz1rnaqRX630qr4xWyFVT95qml5Trbqxk0L4bvnl6fC9NnxU83xZj08lbEjUVPRUOegD+qqqqqqqqr3qp/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfvb6SpuFfT0FFA+eqqZWwwxMTdz3uVEa1PVVXwQCHXwkGV/G8wx3DYJd47dSPrahEXp2kq8rUX1Rse/skImG/wDERlH5Za2ZVfmSdpBJXvhpnb9Fhi2ijVPa1iL7zQAAAAAAAAAAAAAH7UNLPW1sFFSxOlqKiRsUUbe9znLsiJ7VUCyrgmtTrVw4Y4sjOWSsp0+MyN7pJ3fOld7Feq7emyeBuIAAAACqfiLyr8s9bMpvzJO0p31zoKZyL0WGLaKNU9rWIvvLHOIPLkwbRvJsjZL2dTDROipF369vJ+bjVPPZzkX2IpVGAAAAAAAAAAAAAAAAAAAAA7joutxy6gahPhr6+mdjVifs5ayuiVJZW/wBlF0c70VeVvkq9wHHLDaLpfrvTWiy2+puFfUv5IaenjV73r6In/wDEJ28MPC/RYXJS5bnscFwyJm0lLQoqPgoHd6OVe6SVPP6LV7t12cdd0d0gwnSy1/F8at3NWyN5am5VOz6mf0V23zW/qtRE9N+p0AAca40r3HZeHPJOZ6Nlr0hooUVfpK+VvMn7iPX3HZSFHwj2bMqLnj+n9JNzJStW5VzUXoj3IrIUXyVG9ovsegEPgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmf8GrYdoMwyiRn0nU9BA72I6SRPxiJknCOBGx/I/DxbKpzOSS7VlTXPTbr9Psmr72xNX3ndwAAAHgyO601ix65XytXalt9JLVTLv3MjYrnfginvOIccGTfk5w+XeCOTkqLzNFbYuvg9eeRPfGx6e8CuK93GpvF6rrvWv56quqJKmZ3m97lc5fvVTxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAmhwbcOjGR0eo+fUHNI7lms9snb0ane2eVq+PcrWr3fSXw21Dgn0KZmFyj1Ayyj58foZdqCmlb82unavVyovfGxfc53TuRyLPcAAAAB475dLdZLPV3e7VkVHQUcTpqieVdmxsam6qoH45RfrPjFhq79f7hDb7bRxrJPPKuzWp/NVVeiInVVVETqV6cS3EbfdTaqexWF09oxJrtkgR3LNW7L0dMqeHikadE8d122xHE7rhddWslWnpHTUeK0Mi/EKNV2WVe7tpU8Xqncnc1F2TqqqvGwAAAAADeNENOLtqlqBRYvbFWGN356tqlbu2mp2qnM9fNeqIieLlROneWe6dYTjeAYvTY7jFujo6OFPnLtvJM/brJI7vc5fNfYmyIiHHOBDT2PG9ImZLVwI265K5KpzlT5zKZu6Qt9iorn+vOnkSGAAAAAABznW3WTDtKLOtRfatKi5ysVaS107kWedfBVT9Bm/e9enRdt16AbTneW4/g+MVWR5NcY6G30zfnPd1c93gxje9zl8EQrY4jNZr3q7lKVMySUNho3OS227m3RiL/WP26OkVO9e5E6J
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" class="loading-logo" alt="BingoBet" style="width:80px"/>
+    <div class="loading-title">Verificando seu acesso</div>
+    <div class="loading-sub">Validando cadastro e liberando o painel de membro...</div>
+    <div class="loading-bar-wrap"><div class="loading-bar" id="loading-bar"></div></div>
+    <div class="loading-pct" id="loading-pct">0%</div>
+    <div class="loading-status" id="loading-status">Iniciando...</div>
+    <button class="btn btn-green btn-full" id="btn-acessar-painel" onclick="finalizarAcesso()" style="margin-top:20px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+      Acessar meu Painel
+    </button>
+  </div>
+</div>
+
+<div id="app">
+
+  <!-- ══ LOGIN ══ -->
+  <div id="screen-login" class="screen active">
+    <div class="logo-area">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" class="logo-img" alt="BingoBet" style="width:110px"/>
+      <div class="brand">BINGO<span>BET</span></div>
+    </div>
+    <div class="auth-card">
+      <div class="card-title">Entrar na sua conta</div>
+      <div class="section-divider"><span>ACESSO AO PAINEL</span></div>
+      <div class="inp-g">
+        <div class="inp-lbl">NOME DE USUÁRIO</div>
+        <input class="inp" id="l-user" placeholder="seu_usuario" autocomplete="username"/>
+      </div>
+      <div class="inp-g">
+        <div class="inp-lbl">SENHA</div>
+        <div class="inp-pw">
+          <input class="inp" id="l-pass" type="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+          <button class="pw-eye" onclick="togglePW('l-pass',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="save-row">
+        <input type="checkbox" id="save-login" checked/>
+        <label for="save-login">Salvar meu login</label>
+      </div>
+      <div id="l-err" class="err-msg"></div>
+      <button class="btn btn-full btn-entrar" onclick="doLogin()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        ENTRAR
+      </button>
+      <div class="section-divider" style="margin-top:22px"><span>NOVO POR AQUI?</span></div>
+      <button class="btn btn-full btn-cadastro" onclick="goTo('cadastro')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
+        CRIAR MEU CADASTRO
+      </button>
+    </div>
+  </div>
+
+  <!-- ══ CADASTRO ══ -->
+  <div id="screen-cadastro" class="screen">
+    <div class="logo-area">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" class="logo-img" alt="BingoBet" style="width:110px"/>
+      <div class="brand">BINGO<span>BET</span></div>
+    </div>
+    <div class="auth-card">
+      <div class="card-title">Criar Cadastro</div>
+      <div class="card-sub">Preencha com suas informações de afiliado</div>
+      <div class="warn-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>O <strong>e-mail de afiliado</strong> deve ser o mesmo e-mail cadastrado na sua conta de afiliado da BINGOBET.</span>
+      </div>
+      <div class="inp-g">
+        <div class="inp-lbl">NOME DE USUÁRIO *</div>
+        <input class="inp" id="c-user" placeholder="seu_usuario" autocomplete="username"/>
+      </div>
+      <div class="inp-g">
+        <div class="inp-lbl">E-MAIL DE AFILIADO *</div>
+        <input class="inp" id="c-email" type="email" placeholder="email@seudominio.com"/>
+      </div>
+      <div class="inp-g">
+        <div class="inp-lbl">SENHA *</div>
+        <div class="inp-pw">
+          <input class="inp" id="c-pass" type="password" placeholder="Mínimo 6 caracteres"/>
+          <button class="pw-eye" onclick="togglePW('c-pass',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="inp-g">
+        <div class="inp-lbl">CONFIRMAR SENHA *</div>
+        <div class="inp-pw">
+          <input class="inp" id="c-pass2" type="password" placeholder="Repita a senha"/>
+          <button class="pw-eye" onclick="togglePW('c-pass2',this)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="c-err" class="err-msg"></div>
+      <button class="btn btn-full btn-cadastro" onclick="doCadastro()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:15px;height:15px"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/></svg>
+        CRIAR MEU CADASTRO
+      </button>
+      <div class="switch-row">Já tem conta? <button class="link-btn" onclick="goTo('login')">Fazer login</button></div>
+    </div>
+  </div>
+
+  <!-- ══ PENDING ══ -->
+  <div id="screen-pending" class="screen">
+    <div class="auth-card pending-card">
+      <div class="pending-icon">⏳</div>
+      <div class="pending-title">Cadastro enviado!</div>
+      <div class="pending-text">Seu cadastro foi recebido com sucesso.<br/>Após a <strong>aprovação da equipe</strong>, enviaremos um e-mail para</div>
+      <div class="pending-email" id="pending-email-display">—</div>
+      <div class="pending-text" style="margin-top:8px">com as <strong>informações de acesso</strong> ao painel.</div>
+      <button class="btn btn-ghost" style="margin-top:16px;width:100%;justify-content:center" onclick="goTo('login')">← Voltar ao Login</button>
+    </div>
+  </div>
+
+  <!-- ══ PAINEL ══ -->
+  <div id="screen-painel" class="screen">
+    <div class="topbar">
+      <div class="tb-left">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" class="tb-logo-img" alt="BingoBet" style="width:36px"/>
+        <div class="tb-brand">BINGO<span>BET</span> AFF BK</div>
+      </div>
+      <div class="tb-right">
+        <div class="user-pill">
+          <div class="user-av" id="tb-av">C</div>
+          <div class="user-name" id="tb-name">Clipador</div>
+        </div>
+        <button class="logout-btn" onclick="doLogout()">Sair</button>
+      </div>
+    </div>
+    <nav class="painel-nav">
+      <div class="painel-tabs">
+        <button class="ptab on"  id="tab-visao"    onclick="switchTab('visao')">🏠 Visão Geral</button>
+        <button class="ptab"     id="tab-metricas" onclick="switchTab('metricas')">📊 Minhas Métricas</button>
+        <button class="ptab"     id="tab-link"     onclick="switchTab('link')">🔗 Meu Link & QR</button>
+        <button class="ptab"     id="tab-midias"   onclick="switchTab('midias')">🎬 Controle de Mídias</button>
+        <button class="ptab"     id="tab-hist"     onclick="switchTab('hist')">📅 Histórico</button>
+      </div>
+    </nav>
+    <div class="painel-content" id="painel-content"></div>
+  </div>
+
+</div>
+
+<!-- MODAL ADD CONTENT -->
+<div class="modal-over" id="modal-add" onclick="if(event.target===this)closeAddModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeAddModal()">✕</button>
+    <div style="font-size:1rem;font-weight:900;margin-bottom:6px">🎬 Adicionar Mídia</div>
+    <div style="font-size:.76rem;color:var(--m2);margin-bottom:18px">Informe os detalhes do vídeo publicado.</div>
+    <div class="inp-g">
+      <div class="inp-lbl">NOME DO CONTEÚDO *</div>
+      <input class="inp" id="add-nome" placeholder="Ex: Review BingoBet #12"/>
+    </div>
+    <div class="inp-g">
+      <div class="inp-lbl">REDE DE PUBLICAÇÃO *</div>
+      <div class="plat-grid" id="add-plat-grid">
+        <button class="plat-btn" onclick="selectPlat(this,'TikTok')">🎵 TikTok</button>
+        <button class="plat-btn" onclick="selectPlat(this,'YouTube')">▶️ YouTube</button>
+        <button class="plat-btn" onclick="selectPlat(this,'Instagram')">📸 Instagram</button>
+        <button class="plat-btn" onclick="selectPlat(this,'Twitter-X')">✖️ Twitter-X</button>
+        <button class="plat-btn" onclick="selectPlat(this,'Facebook')">📘 Facebook</button>
+        <button class="plat-btn" onclick="selectPlat(this,'Kwai')">🎞️ Kwai</button>
+      </div>
+      <input type="hidden" id="add-plat-val"/>
+    </div>
+    <div class="inp-g">
+      <div class="inp-lbl">LINK DO CONTEÚDO *</div>
+      <input class="inp" id="add-link" placeholder="https://..."/>
+    </div>
+    <div id="add-err" class="err-msg"></div>
+    <button class="btn btn-o btn-full" style="margin-top:8px" onclick="saveContent()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polyline points="20 6 9 17 4 12"/></svg>
+      Salvar Mídia
+    </button>
+  </div>
+</div>
+
+<!-- MODAL MEDIA DETAIL -->
+<div class="modal-over" id="modal-media" onclick="if(event.target===this)closeMediaModal()">
+  <div class="modal" id="modal-media-body"></div>
+</div>
+
+<!-- CHATBOT -->
+<button id="chat-fab" onclick="toggleChat()">🎧
+  <div class="chat-badge" id="chat-badge">1</div>
+</button>
+<div id="chat-window">
+  <div class="chat-hd">
+    <div class="chat-av">🎧</div>
+    <div>
+      <div class="chat-hd-name">Suporte BINGOBET</div>
+      <div class="chat-hd-status">Online agora</div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs"></div>
+  <div class="chat-inp-row">
+    <textarea class="chat-inp" id="chat-inp" placeholder="Digite sua dúvida..." rows="1" onkeydown="chatKeydown(event)" oninput="autoResize(this)"></textarea>
+    <button class="chat-send" onclick="sendChatMsg()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════════════
+// BANCO DE AFILIADOS
+// ══════════════════════════════════════════════════
+const AFILIADOS_DB = [
+  { email:'ana.silva@email.com',    username:'ana_clip',    senha:'Ana123!',    btag:'38584', metrics:{regs:42,ftds:18,cpasPagos:15,comissao:3850} },
+  { email:'pedro.costa@email.com',  username:'pedro_ftd',   senha:'Pedro123!',  btag:'38585', metrics:{regs:38,ftds:15,cpasPagos:13,comissao:3200} },
+  { email:'julia.lima@email.com',   username:'julia_lima',  senha:'Julia123!',  btag:'38586', metrics:{regs:35,ftds:14,cpasPagos:11,comissao:2900} },
+  { email:'marcos.rds@email.com',   username:'marcos_rds',  senha:'Marcos123!', btag:'38587', metrics:{regs:31,ftds:12,cpasPagos:10,comissao:2500} },
+  { email:'camila.fts@email.com',   username:'camila_fts',  senha:'Camila123!', btag:'38588', metrics:{regs:28,ftds:11,cpasPagos:9, comissao:2200} },
+  { email:'demo@clipador.com',      username:'clip_demo',   senha:'Clip123!',   btag:'38583', metrics:{regs:22,ftds:8, cpasPagos:7, comissao:1680} },
+];
+
+let currentUser = null;
+let selectedPlat = '';
+let myMedias = [];
+
+// ══════════════════════════════════════════════════
+// NAVEGAÇÃO
+// ══════════════════════════════════════════════════
+function goTo(screen) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + screen).classList.add('active');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('on'));
+  document.getElementById('tab-' + tab).classList.add('on');
+  renderTab(tab);
+}
+
+// ══════════════════════════════════════════════════
+// AUTENTICAÇÃO
+// ══════════════════════════════════════════════════
+function doLogin() {
+  const user = document.getElementById('l-user').value.trim();
+  const pass = document.getElementById('l-pass').value.trim();
+  const err = document.getElementById('l-err');
+  
+  if (!user || !pass) {
+    err.textContent = 'Preencha todos os campos';
+    err.classList.add('show');
+    return;
+  }
+  
+  const affiliate = AFILIADOS_DB.find(a => a.username === user && a.senha === pass);
+  
+  if (!affiliate) {
+    err.textContent = 'Usuário ou senha incorretos';
+    err.classList.add('show');
+    return;
+  }
+  
+  currentUser = affiliate;
+  err.classList.remove('show');
+  
+  if (document.getElementById('save-login').checked) {
+    localStorage.setItem('bingobet_user', user);
+    localStorage.setItem('bingobet_pass', pass);
+  }
+  
+  showLoading();
+}
+
+function showLoading() {
+  document.getElementById('loading-overlay').classList.add('show');
+  let progress = 0;
+  const interval = setInterval(() => {
+    progress += Math.random() * 30;
+    if (progress > 90) progress = 90;
+    document.getElementById('loading-bar').style.width = progress + '%';
+    document.getElementById('loading-pct').textContent = Math.round(progress) + '%';
+    
+    if (progress >= 90) {
+      clearInterval(interval);
+      document.getElementById('loading-status').textContent = 'Carregando painel...';
+      document.getElementById('btn-acessar-painel').style.display = 'block';
+    }
+  }, 300);
+}
+
+function finalizarAcesso() {
+  document.getElementById('loading-overlay').classList.remove('show');
+  document.getElementById('loading-bar').style.width = '0%';
+  document.getElementById('loading-pct').textContent = '0%';
+  document.getElementById('loading-status').textContent = 'Iniciando...';
+  document.getElementById('btn-acessar-painel').style.display = 'none';
+  
+  goTo('painel');
+  updateUserInfo();
+  switchTab('visao');
+}
+
+function doLogout() {
+  currentUser = null;
+  localStorage.removeItem('bingobet_user');
+  localStorage.removeItem('bingobet_pass');
+  document.getElementById('l-user').value = '';
+  document.getElementById('l-pass').value = '';
+  document.getElementById('l-err').classList.remove('show');
+  goTo('login');
+}
+
+function updateUserInfo() {
+  if (!currentUser) return;
+  document.getElementById('tb-av').textContent = currentUser.username[0].toUpperCase();
+  document.getElementById('tb-name').textContent = currentUser.username;
+}
+
+// ══════════════════════════════════════════════════
+// FORMULÁRIO DE CADASTRO
+// ══════════════════════════════════════════════════
+function doCadastro() {
+  const user = document.getElementById('c-user').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const pass = document.getElementById('c-pass').value.trim();
+  const pass2 = document.getElementById('c-pass2').value.trim();
+  const err = document.getElementById('c-err');
+  
+  if (!user || !email || !pass || !pass2) {
+    err.textContent = 'Preencha todos os campos obrigatórios';
+    err.classList.add('show');
+    return;
+  }
+  
+  if (pass.length < 6) {
+    err.textContent = 'Senha deve ter no mínimo 6 caracteres';
+    err.classList.add('show');
+    return;
+  }
+  
+  if (pass !== pass2) {
+    err.textContent = 'As senhas não conferem';
+    err.classList.add('show');
+    return;
+  }
+  
+  if (AFILIADOS_DB.find(a => a.username === user)) {
+    err.textContent = 'Usuário já existe';
+    err.classList.add('show');
+    return;
+  }
+  
+  err.classList.remove('show');
+  document.getElementById('pending-email-display').textContent = email;
+  goTo('pending');
+}
+
+// ══════════════════════════════════════════════════
+// UI HELPERS
+// ══════════════════════════════════════════════════
+function togglePW(id, btn) {
+  const input = document.getElementById(id);
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.style.color = 'var(--orange)';
+  } else {
+    input.type = 'password';
+    btn.style.color = 'var(--m2)';
+  }
+}
+
+function showToast(msg, type = 's') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = 'show ' + type;
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ══════════════════════════════════════════════════
+// ABAS DO PAINEL
+// ══════════════════════════════════════════════════
+function renderTab(tab) {
+  const content = document.getElementById('painel-content');
+  
+  switch(tab) {
+    case 'visao':
+      content.innerHTML = renderVisaoGeral();
+      break;
+    case 'metricas':
+      content.innerHTML = renderMetricas();
+      break;
+    case 'link':
+      content.innerHTML = renderLink();
+      break;
+    case 'midias':
+      content.innerHTML = renderMidias();
+      break;
+    case 'hist':
+      content.innerHTML = renderHistorico();
+      break;
+  }
+}
+
+function renderVisaoGeral() {
+  const m = currentUser.metrics;
+  return `
+    <div style="margin-bottom:24px">
+      <h2 class="ph">Bem-vindo, ${currentUser.username}!</h2>
+      <p class="ps">Acompanhe seu desempenho em tempo real</p>
+    </div>
+    <div class="sc-grid">
+      <div class="sc">
+        <div class="sc-ico" style="background:rgba(255,107,0,0.15);color:var(--orange)">📱</div>
+        <div class="sc-v">${m.regs}</div>
+        <div class="sc-l">REGISTROS</div>
+      </div>
+      <div class="sc">
+        <div class="sc-ico" style="background:rgba(34,197,94,0.15);color:var(--green)">💰</div>
+        <div class="sc-v">${m.ftds}</div>
+        <div class="sc-l">DEPÓSITOS</div>
+      </div>
+      <div class="sc">
+        <div class="sc-ico" style="background:rgba(59,130,246,0.15);color:var(--blue)">✓</div>
+        <div class="sc-v">${m.cpasPagos}</div>
+        <div class="sc-l">CPAs PAGOS</div>
+      </div>
+      <div class="sc">
+        <div class="sc-ico" style="background:rgba(255,179,0,0.15);color:var(--orange3)">💵</div>
+        <div class="sc-v">R$ ${(m.comissao/100).toFixed(0)}</div>
+        <div class="sc-l">COMISSÃO</div>
+      </div>
+    </div>
+    <div class="ccard">
+      <div class="ccard-h">📊 Seu Link de Afiliado</div>
+      <div class="ccard-b">
+        <div style="background:rgba(255,255,255,0.04);padding:14px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.8rem;word-break:break-all;margin-bottom:12px">
+          https://bingobet.com/?ref=${currentUser.btag}
+        </div>
+        <button class="copy-link-btn" onclick="copyToClipboard('https://bingobet.com/?ref=${currentUser.btag}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+          Copiar Link
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderMetricas() {
+  const m = currentUser.metrics;
+  return `
+    <h2 class="ph" style="margin-bottom:20px">📊 Minhas Métricas</h2>
+    <div class="ccard">
+      <div class="ccard-h">Resumo de Performance</div>
+      <div class="ccard-b">
+        <div class="row">
+          <span class="lbl">Total de Registros</span>
+          <span class="val" style="color:var(--orange)">${m.regs}</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Depósitos Confirmados</span>
+          <span class="val" style="color:var(--green)">${m.ftds}</span>
+        </div>
+        <div class="row">
+          <span class="lbl">CPAs Pagos</span>
+          <span class="val" style="color:var(--blue)">${m.cpasPagos}</span>
+        </div>
+        <div class="row">
+          <span class="lbl">Taxa de Conversão</span>
+          <span class="val">${((m.ftds/m.regs)*100).toFixed(1)}%</span>
+        </div>
+        <div class="fin-total">
+          <span class="lbl">Comissão Total</span>
+          <span class="val">R$ ${(m.comissao/100).toFixed(2)}</span>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderLink() {
+  const link = `https://bingobet.com/?ref=${currentUser.btag}`;
+  return `
+    <h2 class="ph" style="margin-bottom:20px">🔗 Seu Link & QR Code</h2>
+    <div class="ccard">
+      <div class="ccard-h">Link de Afiliado</div>
+      <div class="ccard-b">
+        <div style="background:rgba(255,255,255,0.04);padding:14px;border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:.75rem;word-break:break-all;margin-bottom:12px">
+          ${link}
+        </div>
+        <button class="copy-link-btn" onclick="copyToClipboard('${link}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+          Copiar Link
+        </button>
+      </div>
+    </div>
+    <div class="ccard" style="margin-top:16px">
+      <div class="ccard-h">QR Code</div>
+      <div class="ccard-b" style="text-align:center">
+        <div id="qr-container" style="padding:20px;background:white;border-radius:12px;display:inline-block;margin:16px 0"></div>
+        <button class="download-qr-btn" onclick="downloadQRCode()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Baixar QR Code
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function renderMidias() {
+  let html = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <h2 class="ph">🎬 Minhas Mídias</h2>
+      <button class="btn btn-o" onclick="openAddModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Adicionar
+      </button>
+    </div>
+  `;
+  
+  if (myMedias.length === 0) {
+    html += `
+      <div class="ccard">
+        <div class="empty">
+          <div class="empty-ico">🎬</div>
+          <div class="empty-txt">Nenhuma mídia cadastrada ainda.<br/>Clique em "Adicionar" para registrar seu primeiro vídeo!</div>
+        </div>
+      </div>
+    `;
+  } else {
+    myMedias.forEach((m, i) => {
+      html += `
+        <div class="ccard" style="cursor:pointer;margin-bottom:12px" onclick="openMediaModal(${i})">
+          <div class="ccard-h">
+            <span style="flex:1">${m.nome}</span>
+            <span class="tag tag-o">${m.plat}</span>
+          </div>
+          <div class="ccard-b">
+            <div style="font-size:.82rem;color:var(--m)">
+              <a href="${m.link}" target="_blank" style="color:var(--blue);text-decoration:none">${m.link}</a>
+            </div>
+          </div>
+        </div>
+      `;
+    });
+  }
+  
+  return html;
+}
+
+function renderHistorico() {
+  return `
+    <h2 class="ph" style="margin-bottom:20px">📅 Histórico</h2>
+    <div class="ccard">
+      <div class="ccard-h">Últimos Meses</div>
+      <div class="ccard-b">
+        <table>
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th style="text-align:right">Registros</th>
+              <th style="text-align:right">Depósitos</th>
+              <th style="text-align:right">Comissão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Março 2026</td>
+              <td style="text-align:right">${currentUser.metrics.regs}</td>
+              <td style="text-align:right">${currentUser.metrics.ftds}</td>
+              <td style="text-align:right;color:var(--orange);font-weight:700">R$ ${(currentUser.metrics.comissao/100).toFixed(2)}</td>
+            </tr>
+            <tr>
+              <td>Fevereiro 2026</td>
+              <td style="text-align:right">28</td>
+              <td style="text-align:right">9</td>
+              <td style="text-align:right;color:var(--orange);font-weight:700">R$ 850,00</td>
+            </tr>
+            <tr>
+              <td>Janeiro 2026</td>
+              <td style="text-align:right">19</td>
+              <td style="text-align:right">5</td>
+              <td style="text-align:right;color:var(--orange);font-weight:700">R$ 620,00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+}
+
+function openAddModal() {
+  document.getElementById('modal-add').classList.add('open');
+}
+
+function closeAddModal() {
+  document.getElementById('modal-add').classList.remove('open');
+  document.getElementById('add-nome').value = '';
+  document.getElementById('add-link').value = '';
+  document.getElementById('add-plat-val').value = '';
+  document.querySelectorAll('#add-plat-grid .plat-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('add-err').classList.remove('show');
+}
+
+function selectPlat(btn, name) {
+  document.querySelectorAll('#add-plat-grid .plat-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('add-plat-val').value = name;
+}
+
+function saveContent() {
+  const nome = document.getElementById('add-nome').value.trim();
+  const plat = document.getElementById('add-plat-val').value;
+  const link = document.getElementById('add-link').value.trim();
+  const err = document.getElementById('add-err');
+  
+  if (!nome || !plat || !link) {
+    err.textContent = 'Preencha todos os campos obrigatórios';
+    err.classList.add('show');
+    return;
+  }
+  
+  myMedias.push({ nome, plat, link });
+  err.classList.remove('show');
+  closeAddModal();
+  showToast('✓ Mídia adicionada com sucesso!');
+  switchTab('midias');
+}
+
+function openMediaModal(idx) {
+  const m = myMedias[idx];
+  const body = document.getElementById('modal-media-body');
+  body.innerHTML = `
+    <div class="modal-h">
+      <span class="modal-title">${m.nome}</span>
+      <button class="modal-close" onclick="closeMediaModal()">✕</button>
+    </div>
+    <div class="modal-b">
+      <div class="media-detail">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+          <span class="media-plat-tag" style="background:rgba(255,107,0,0.1);border:1px solid rgba(255,107,0,0.22);color:var(--orange)">📺 ${m.plat}</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);padding:12px;border-radius:10px;font-size:.8rem;word-break:break-all;margin-bottom:14px">
+          <a href="${m.link}" target="_blank" style="color:var(--blue);text-decoration:none">${m.link}</a>
+        </div>
+        <button class="copy-link-btn2" onclick="copyToClipboard('${m.link}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+          Copiar Link
+        </button>
+        <button class="btn btn-red" style="width:100%;justify-content:center;margin-top:10px" onclick="deleteMedia(${idx})">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Remover
+        </button>
+      </div>
+    </div>
+  `;
+  document.getElementById('modal-media').classList.add('open');
+}
+
+function closeMediaModal() {
+  document.getElementById('modal-media').classList.remove('open');
+}
+
+function deleteMedia(idx) {
+  myMedias.splice(idx, 1);
+  closeMediaModal();
+  showToast('✓ Mídia removida!');
+  switchTab('midias');
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showToast('✓ Copiado para a área de transferência!');
+  });
+}
+
+function downloadQRCode() {
+  const canvas = document.querySelector('#qr-container canvas');
+  if (!canvas) {
+    showToast('✗ QR Code não foi gerado', 'e');
+    return;
+  }
+  const link = document.createElement('a');
+  link.href = canvas.toDataURL();
+  link.download = `qr_${currentUser.btag}.png`;
+  link.click();
+  showToast('✓ QR Code baixado!');
+}
+
+// ══════════════════════════════════════════════════
+// CHATBOT
+// ══════════════════════════════════════════════════
+function toggleChat() {
+  document.getElementById('chat-window').classList.toggle('open');
+}
+
+function chatKeydown(e) {
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    sendChatMsg();
+  }
+}
+
+function autoResize(e) {
+  e.style.height = 'auto';
+  e.style.height = Math.min(e.scrollHeight, 80) + 'px';
+}
+
+function sendChatMsg() {
+  const inp = document.getElementById('chat-inp');
+  const msg = inp.value.trim();
+  if (!msg) return;
+  
+  const msgs = document.getElementById('chat-msgs');
+  const userMsg = document.createElement('div');
+  userMsg.className = 'msg msg-user';
+  userMsg.innerHTML = `<div class="msg-bubble">${msg}</div><div class="msg-time">${new Date().toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'})}</div>`;
+  msgs.appendChild(userMsg);
+  
+  inp.value = '';
+  inp.style.height = 'auto';
+  
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'msg msg-bot';
+    botMsg.innerHTML = `<div class="msg-bubble">Obrigado por sua mensagem! Em breve nosso time entrará em contato.</div><div class="msg-time">${new Date().toLocaleTimeString('pt-BR', {hour:'2-digit',minute:'2-digit'})}</div>`;
+    msgs.appendChild(botMsg);
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 800);
+  
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ══════════════════════════════════════════════════
+// INICIALIZAÇÃO
+// ══════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  const saved_user = localStorage.getItem('bingobet_user');
+  const saved_pass = localStorage.getItem('bingobet_pass');
+  
+  if (saved_user && saved_pass) {
+    document.getElementById('l-user').value = saved_user;
+    document.getElementById('l-pass').value = saved_pass;
+  }
+  
+  // Gera QR Code quando abre a aba de link
+  const originalSwitchTab = switchTab;
+  switchTab = function(tab) {
+    originalSwitchTab(tab);
+    if (tab === 'link' && currentUser) {
+      setTimeout(() => {
+        const container = document.getElementById('qr-container');
+        if (container) {
+          container.innerHTML = '';
+          new QRCode(container, {
+            text: `https://bingobet.com/?ref=${currentUser.btag}`,
+            width: 200,
+            height: 200,
+            colorDark: '#000',
+            colorLight: '#fff'
+          });
+        }
+      }, 100);
+    }
+  };
+});
+</script>
