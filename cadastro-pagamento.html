@@ -534,7 +534,7 @@
 
       document.getElementById('form').reset();
 
-      if (data.found === true || data.status === 'localizado') {
+      if (data.found === true || data.status === 'ok' || data.status === 'localizado') {
         document.getElementById('overlay-success').classList.add('show');
       } else {
         document.getElementById('overlay-warning').classList.add('show');
