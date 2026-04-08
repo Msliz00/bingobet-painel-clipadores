@@ -285,17 +285,9 @@
       params.append("email_contato", emailContato);
       params.append("telefone",      telefone);
 
-      const res  = await fetch(WEBHOOK_URL, { method: "POST", body: params, headers: { "Content-Type": "application/x-www-form-urlencoded" } });
-      const data = await res.json();
+      await fetch(WEBHOOK_URL, { method: "POST", body: params, mode: "no-cors" });
       document.getElementById("form").reset();
-
-      if (data.status === "ok") {
-        document.getElementById("overlay-success").classList.add("show");
-      } else if (data.status === "registrado") {
-        document.getElementById("overlay-registered").classList.add("show");
-      } else {
-        document.getElementById("overlay-warning").classList.add("show");
-      }
+      document.getElementById("overlay-success").classList.add("show");
     } catch(err) {
       alert("Erro de conexão. Tente novamente em instantes.");
     } finally {
